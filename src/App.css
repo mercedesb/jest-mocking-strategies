@@ -1,6 +1,3 @@
-.App {
-}
-
 .App-header {
   align-items: center;
   background-color: #282c34;
@@ -14,4 +11,35 @@
 
 .App-link {
   color: #61dafb;
+}
+
+main {
+  padding: 1rem;
+}
+
+button {
+  background-color: #61dafb;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  color: #282c34;
+  cursor: pointer;
+  float: right;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  transition: all 0.3s ease 0s;
+}
+
+.buttonContainer {
+  display: flex;
+  padding: 1rem 0;
+}
+
+.imgContainer {
+  width: 50%;
+
+  img {
+    max-width: 100%;
+  }
 }

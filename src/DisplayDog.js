@@ -32,15 +32,19 @@ export function DisplayDog(props) {
 
   return (
     <React.Fragment>
-      <button onClick={() => setIsFetching(!isFetching)}>
-        {isFetching
-          ? "Stop, I can't take it! Too much cute!"
-          : "Please fetch me some cute dogs"}
-      </button>
+      <div className="buttonContainer">
+        <button onClick={() => setIsFetching(!isFetching)}>
+          {isFetching
+            ? "Stop, I can't take it! Too much cute!"
+            : "Please fetch me some cute dogs"}
+        </button>
+      </div>
 
       {isFetching && (
         <div>
-          <img src={dogImg} alt="A random dog. I'm sure it's very cute." />
+          <div className="imgContainer">
+            <img src={dogImg} alt="A random dog. I'm sure it's very cute." />
+          </div>
           <p>
             This dog image was fetched at{" "}
             <DisplayDateTime datetime={timeFetched} />
