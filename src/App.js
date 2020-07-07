@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import { DisplayDog } from "./DisplayDog";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         </a>
       </header>
       <main>
+        <DisplayDog />
         <ul>
           <li>Mock an entire node module</li>
           <li>
