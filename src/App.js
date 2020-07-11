@@ -1,11 +1,14 @@
 import React from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
-import { DisplayDog } from "./DisplayDog";
+import { DisplayAnimalContainer } from "./components/DisplayAnimalContainer";
+import { Home } from "./components/Home";
+import { SupportedAnimalsContextProvider } from "./contexts/SupportedAnimals";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header flex justifyCenter flexColumn">
         <h1>Jest mocking strategies</h1>
         <a
           className="App-link"
@@ -17,23 +20,18 @@ function App() {
         </a>
       </header>
       <main>
-        <DisplayDog />
-        <ul>
-          <li>Mock an entire node module</li>
-          <li>
-            Mock a single function of a node module, not worrying about behavior
-          </li>
-          <li>
-            Mock a single function of a node module, with specific behavior
-          </li>
-          <li>
-            Mock a single function of a node module multiple times in a test
-            file, with different behavior for each
-          </li>
-          <li>Mock default browser libraries for your whole test suite</li>
-          <li>Mock default browser libraries for a single test file</li>
-          <li>How a function is exported matters</li>
-        </ul>
+        <SupportedAnimalsContextProvider>
+          <BrowserRouter>
+            <Switch>
+              <Route path="/cute/:animal">
+                <DisplayAnimalContainer />
+              </Route>
+              <Route path="/">
+                <Home />
+              </Route>
+            </Switch>
+          </BrowserRouter>
+        </SupportedAnimalsContextProvider>
       </main>
     </div>
   );

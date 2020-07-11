@@ -1,45 +1,130 @@
-.App-header {
-  align-items: center;
-  background-color: #282c34;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1rem;
-  text-align: center;
-}
-
-.App-link {
-  color: #61dafb;
+/* default element styling */
+body {
+  color: #252627;
+  font-family: "Poppins", sans-serif;
 }
 
 main {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 60%;
   padding: 1rem;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Libre Baskerville", serif;
+}
+
+a {
+  font-weight: 700;
+  color: #252627;
+}
+
 button {
-  background-color: #61dafb;
+  background-color: #904e55;
   border: none;
   border-radius: 3px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
-  color: #282c34;
+  color: white;
   cursor: pointer;
-  float: right;
   font-size: 1rem;
   font-weight: 600;
   padding: 0.5rem 1rem;
   transition: all 0.3s ease 0s;
 }
 
-.buttonContainer {
+button + button {
+  margin-left: 1rem;
+}
+
+button a {
+  color: white;
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+}
+
+ul li {
+  display: inline-block;
+}
+
+nav ul li {
+  font-weight: 700;
+}
+
+li + li {
+  margin-left: 1rem;
+}
+
+/* utility classes */
+.alignCenter {
+  align-items: center;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.flex {
   display: flex;
-  padding: 1rem 0;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
+
+.textCenter {
+  text-align: center;
+}
+
+/* custom styles */
+
+.App {
+  display: flex;
+  flex: 1 1;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.App-header {
+  align-items: center;
+  background-color: #524948;
+  color: white;
+  flex-direction: column;
+  padding: 1rem;
+  text-align: center;
+}
+
+.App-link {
+  color: white;
+}
+
+.breadcrumbSpacer {
+  margin-left: 0.5rem;
+}
+
+.buttonContainer {
+  margin: 1rem 0;
 }
 
 .imgContainer {
   width: 50%;
+}
 
-  img {
-    max-width: 100%;
-  }
+.imgContainer img {
+  max-width: 100%;
 }
