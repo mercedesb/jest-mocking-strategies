@@ -2,8 +2,6 @@ import React from "react";
 import { render, act, cleanup } from "@testing-library/react";
 import { LittleTest } from "../LittleTest";
 
-// global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
-
 afterAll(() => {
   jest.useRealTimers();
 });
