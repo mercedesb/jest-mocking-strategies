@@ -2,12 +2,8 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
 import pluralize from "pluralize";
-import { randomInteger } from "../../helpers/numberHelper";
+import { mockAnimal } from "../../testHelpers/animalsFactory";
 import { Breadcrumbs } from "../Breadcrumbs";
-
-const mockAnimals = ["dog", "cat", "bird"];
-const randomIndex = randomInteger(0, mockAnimals.length);
-const mockAnimal = mockAnimals[randomIndex];
 
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"), // use actual for all non-hook parts

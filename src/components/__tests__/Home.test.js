@@ -1,11 +1,10 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
+import { mockAnimals } from "../../testHelpers/animalsFactory";
 import { Home } from "../Home";
 
 let subject;
-
-const mockAnimals = ["dog", "cat", "bird"];
 
 // need to make sure to call the function from the object in the code
 let mockUseContext = jest.fn(() => ({ animals: mockAnimals }));

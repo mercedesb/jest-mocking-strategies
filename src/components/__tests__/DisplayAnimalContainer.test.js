@@ -1,12 +1,8 @@
 import React from "react";
 import { useParams, MemoryRouter } from "react-router-dom";
 import { render } from "@testing-library/react";
-import { randomInteger } from "../../helpers/numberHelper";
+import { mockAnimals, mockAnimal } from "../../testHelpers/animalsFactory";
 import { DisplayAnimalContainer } from "../DisplayAnimalContainer";
-
-const mockAnimals = ["dog", "cat", "bird"];
-const randomIndex = randomInteger(0, mockAnimals.length);
-const mockAnimal = mockAnimals[randomIndex];
 
 // need to make sure to call the function from the object in the code
 let mockUseContext = jest.fn(() => ({ animals: mockAnimals }));

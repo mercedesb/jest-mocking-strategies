@@ -1,14 +1,11 @@
 import React from "react";
 import { render, act, cleanup, fireEvent } from "@testing-library/react";
-import { randomInteger } from "../../helpers/numberHelper";
+import { mockAnimals, mockAnimal } from "../../testHelpers/animalsFactory";
 import { FetchingContainer } from "../FetchingContainer";
 
 let subject;
 let animal;
 let renderFn = jest.fn();
-
-const mockAnimals = ["dog", "cat", "bird"];
-const randomIndex = randomInteger(0, mockAnimals.length);
 
 // need to make sure to call the function from the object in the code
 let mockUseContext = jest.fn(() => ({ animals: mockAnimals }));
@@ -28,7 +25,7 @@ afterEach(() => {
 describe("FetchingContainer", () => {
   describe("with a supported animal", () => {
     beforeEach(() => {
-      animal = mockAnimals[randomIndex];
+      animal = mockAnimal;
       subject = <FetchingContainer animal={animal} render={renderFn} />;
     });
 
