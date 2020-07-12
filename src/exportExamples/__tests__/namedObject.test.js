@@ -1,4 +1,4 @@
-import { example } from "../namedExportObjectExample";
+import { example } from "../namedObject";
 
 const mockExpected = "mock value";
 jest.spyOn(example, "getValue").mockImplementation(jest.fn(() => mockExpected));

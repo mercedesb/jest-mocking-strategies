@@ -1,7 +1,5 @@
-function example() {
+export default function () {
   return {
     getValue: () => "real value",
   };
 }
-
-export default example;

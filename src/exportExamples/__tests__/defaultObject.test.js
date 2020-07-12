@@ -1,4 +1,4 @@
-import example from "../defaultExportObjectExample";
+import example from "../defaultObject";
 
 const mockExpected = "mock value";
 jest.spyOn(example, "getValue").mockImplementation(jest.fn(() => mockExpected));

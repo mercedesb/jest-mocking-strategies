@@ -1,7 +1,7 @@
-import { example } from "../namedExportObjectExample";
+import { example } from "../namedFunction";
 
 const mockExpected = "mock value";
-jest.mock("../namedExportObjectExample", () => ({
+jest.mock("../namedFunction", () => ({
   example: jest.fn(() => mockExpected),
 }));
 

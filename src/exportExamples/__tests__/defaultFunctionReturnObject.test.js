@@ -1,12 +1,12 @@
-import * as exampleModule from "../namedExportStructuredExample";
+import * as exampleModule from "../defaultFunctionReturnObject";
 
 const mockExpected = "mock value";
-jest.spyOn(exampleModule, "example").mockImplementation(() => ({
+jest.spyOn(exampleModule, "default").mockImplementation(() => ({
   getValue: jest.fn(() => mockExpected),
 }));
 
 it("returns the expected value", () => {
-  const { getValue } = exampleModule.example();
+  const { getValue } = exampleModule.default();
   const actual = getValue();
   expect(actual).toEqual(mockExpected);
 });

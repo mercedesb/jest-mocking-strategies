@@ -1,7 +1,7 @@
-import example from "../defaultExportFunctionExample";
+import example from "../defaultFunction";
 
 const mockExpected = "mock value";
-jest.mock("../defaultExportFunctionExample", () => jest.fn(() => mockExpected));
+jest.mock("../defaultFunction", () => jest.fn(() => mockExpected));
 
 it("returns the expected value", () => {
   const actual = example();
