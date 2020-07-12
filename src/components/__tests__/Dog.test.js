@@ -5,7 +5,7 @@ import { Dog } from "../Dog";
 
 jest
   .spyOn(axios, "get")
-  .mockReturnValue(Promise.resolve({ data: { message: "hello" } }));
+  .mockImplementation(() => Promise.resolve({ data: { file: "hello" } }));
 
 beforeEach(() => {
   jest.clearAllMocks();

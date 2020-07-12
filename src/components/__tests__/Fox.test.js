@@ -3,9 +3,7 @@ import { render, act, cleanup, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { Fox } from "../Fox";
 
-jest
-  .spyOn(axios, "get")
-  .mockImplementation(() => Promise.resolve({ data: { file: "hello" } }));
+jest.spyOn(axios, "get").mockResolvedValue({ data: { file: "hello" } });
 
 beforeEach(() => {
   jest.clearAllMocks();
