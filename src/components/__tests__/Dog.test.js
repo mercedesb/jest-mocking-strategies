@@ -10,6 +10,14 @@ jest
 let subject;
 let refreshTime = 5000;
 
+beforeAll(() => {
+  jest.useFakeTimers();
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+});
+
 describe("Dog", () => {
   describe("when fetching", () => {
     beforeEach(() => {
@@ -17,13 +25,11 @@ describe("Dog", () => {
     });
 
     it("fetches an image on initial render", async () => {
-      jest.useFakeTimers();
       render(subject);
       await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
     });
 
     it("gets a new image on the configured interval", async () => {
-      jest.useFakeTimers();
       render(subject);
       await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
       act(() => jest.advanceTimersByTime(refreshTime));
@@ -37,7 +43,6 @@ describe("Dog", () => {
     });
 
     it("does not fetch images", async () => {
-      jest.useFakeTimers();
       render(subject);
 
       act(() => jest.advanceTimersByTime(refreshTime));

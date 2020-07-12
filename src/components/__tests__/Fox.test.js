@@ -8,6 +8,14 @@ jest.spyOn(axios, "get").mockResolvedValue({ data: { file: "hello" } });
 let subject;
 let refreshTime = 5000;
 
+beforeAll(() => {
+  jest.useFakeTimers();
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+});
+
 describe("Fox", () => {
   describe("when fetching", () => {
     beforeEach(() => {
@@ -15,13 +23,11 @@ describe("Fox", () => {
     });
 
     it("fetches an image on initial render", async () => {
-      jest.useFakeTimers();
       render(subject);
       await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
     });
 
     it("gets a new image on the configured interval", async () => {
-      jest.useFakeTimers();
       render(subject);
       await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
       act(() => jest.advanceTimersByTime(refreshTime));
@@ -35,7 +41,6 @@ describe("Fox", () => {
     });
 
     it("does not fetch images", async () => {
-      jest.useFakeTimers();
       render(subject);
 
       act(() => jest.advanceTimersByTime(refreshTime));

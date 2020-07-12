@@ -2,16 +2,20 @@ import React from "react";
 import { render, act, waitFor } from "@testing-library/react";
 import { Bunny } from "../Bunny";
 
-afterAll(() => {
-  delete global.fetch;
-});
-
 let subject;
 let refreshTime = 5000;
 
+beforeAll(() => {
+  jest.useFakeTimers();
+});
+
+afterAll(() => {
+  jest.useRealTimers();
+  delete global.fetch;
+});
+
 describe("Bunny", () => {
   beforeEach(() => {
-    jest.resetAllMocks();
     global.fetch = jest.fn().mockResolvedValue({
       status: 200,
       ok: true,
@@ -25,13 +29,11 @@ describe("Bunny", () => {
     });
 
     it("fetches an image on initial render", async () => {
-      jest.useFakeTimers();
       render(subject);
       await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
     });
 
     it("gets a new image on the configured interval", async () => {
-      jest.useFakeTimers();
       render(subject);
       await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
       act(() => jest.advanceTimersByTime(refreshTime));
@@ -45,7 +47,6 @@ describe("Bunny", () => {
     });
 
     it("does not fetch images", async () => {
-      jest.useFakeTimers();
       render(subject);
 
       act(() => jest.advanceTimersByTime(refreshTime));
