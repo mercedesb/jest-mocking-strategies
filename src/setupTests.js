@@ -3,27 +3,14 @@
 // expect(element).toHaveTextContent(/react/i)
 // learn more: https://github.com/testing-library/jest-dom
 import "@testing-library/jest-dom/extend-expect";
+import { SessionStorageMock } from "./testHelpers/sessionStorageMock";
 
-class SessionStorageMock {
-  constructor() {
-    this.store = {};
-  }
+const unmockedSessionStorage = global.sessionStorage;
 
-  clear() {
-    this.store = {};
-  }
+beforeAll(() => {
+  global.sessionStorage = new SessionStorageMock();
+});
 
-  getItem(key) {
-    return this.store[key] || null;
-  }
-
-  setItem(key, value) {
-    this.store[key] = value.toString();
-  }
-
-  removeItem(key) {
-    delete this.store[key];
-  }
-}
-
-global.sessionStorage = new SessionStorageMock();
+afterAll(() => {
+  global.sessionStorage = unmockedSessionStorage;
+});
