@@ -58,5 +58,10 @@ describe("Breadcrumbs", () => {
       render(subject);
       expect(pluralize).toHaveBeenCalled();
     });
+
+    it("capitalizes the current page name", () => {
+      const { getByText } = render(subject);
+      expect(getByText(/capitalize mocked!/i)).toBeInTheDocument();
+    });
   });
 });
