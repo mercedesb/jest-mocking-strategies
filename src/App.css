@@ -71,10 +71,6 @@ li + li {
   align-items: center;
 }
 
-.capitalize {
-  text-transform: capitalize;
-}
-
 .flex {
   display: flex;
 }

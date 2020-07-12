@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, Link } from "react-router-dom";
 import pluralize from "pluralize";
+import voca from "voca";
 import { SupportedAnimals } from "../contexts/SupportedAnimals";
 
 export function SeeOthers() {
@@ -12,11 +13,11 @@ export function SeeOthers() {
   return (
     <div>
       <p>Want to see other cute animals?</p>
-      <div className="capitalize">
+      <div>
         <ul>
           {animalsToRender.map((a) => (
             <li key={a}>
-              <Link to={a}>{pluralize(a)}</Link>
+              <Link to={a}>{voca.capitalize(pluralize(a))}</Link>
             </li>
           ))}
         </ul>

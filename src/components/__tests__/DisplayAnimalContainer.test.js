@@ -48,7 +48,9 @@ describe("DisplayAnimalContainer", () => {
 
     it("renders the correct animal component(s)", () => {
       const { getAllByText } = render(subject);
-      expect(getAllByText(mockAnimal).length).toBeGreaterThan(0);
+      expect(getAllByText(new RegExp(mockAnimal, "i")).length).toBeGreaterThan(
+        0
+      );
     });
   });
 
