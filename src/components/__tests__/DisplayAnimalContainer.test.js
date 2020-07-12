@@ -7,30 +7,33 @@ import { DisplayAnimalContainer } from "../DisplayAnimalContainer";
 let mockUseContext = jest.fn(() => ({ animals: mockAnimals }));
 jest.spyOn(React, "useContext").mockImplementation(mockUseContext);
 
-jest.mock("react-router-dom", () => ({
-  ...jest.requireActual("react-router-dom"), // use actual for all non-hook parts
-  useParams: jest.fn(),
-}));
-
 let mockPluralize = jest.fn((word) => word);
 jest.mock("pluralize", () => ({
   __esModule: true,
   default: (word) => mockPluralize(word),
 }));
 
+jest.mock("react-router-dom", () => ({
+  ...jest.requireActual("react-router-dom"), // use actual for all non-hook parts
+  useParams: jest.fn(),
+}));
+
 let subject;
 
 describe("DisplayAnimalContainer", () => {
+  beforeEach(() => {
+    subject = (
+      <MemoryRouter>
+        <DisplayAnimalContainer />
+      </MemoryRouter>
+    );
+  });
+
   describe("with a supported animal type", () => {
     beforeEach(() => {
       useParams.mockReturnValue({
         animal: mockAnimal,
       });
-      subject = (
-        <MemoryRouter>
-          <DisplayAnimalContainer />
-        </MemoryRouter>
-      );
     });
 
     it("renders the correct animal component(s)", () => {
@@ -46,11 +49,6 @@ describe("DisplayAnimalContainer", () => {
       useParams.mockReturnValue({
         animal: "hedgehog",
       });
-      subject = (
-        <MemoryRouter>
-          <DisplayAnimalContainer />
-        </MemoryRouter>
-      );
     });
 
     it("does not render an animal component", () => {
