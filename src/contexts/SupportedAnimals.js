@@ -1,6 +1,6 @@
 import React, { createContext } from "react";
 
-const supportedAnimals = ["dog", "cat", "fox", "goat"];
+const supportedAnimals = ["dog", "cat", "fox", "goat", "bunny"];
 
 export const SupportedAnimals = createContext({
   animals: null,

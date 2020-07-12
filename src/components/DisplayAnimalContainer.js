@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import pluralize from "pluralize";
+import { Bunny } from "./Bunny";
 import { Breadcrumbs } from "./Breadcrumbs";
 import { Cat } from "./Cat";
 import { Dog } from "./Dog";
@@ -28,6 +29,8 @@ export function DisplayAnimalContainer() {
             return <Fox {...passThroughProps} />;
           } else if (/goat/i.test(animal)) {
             return <Goat {...passThroughProps} />;
+          } else if (/bunny/i.test(animal)) {
+            return <Bunny {...passThroughProps} />;
           } else {
             return null;
           }
