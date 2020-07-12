@@ -9,12 +9,6 @@ let subject;
 let mockUseContext = jest.fn(() => ({ animals: mockAnimals }));
 jest.spyOn(React, "useContext").mockImplementation(mockUseContext);
 
-let mockPluralize = jest.fn((word) => word);
-jest.mock("pluralize", () => ({
-  __esModule: true,
-  default: (word) => mockPluralize(word),
-}));
-
 describe("Home", () => {
   describe("render", () => {
     beforeEach(() => {

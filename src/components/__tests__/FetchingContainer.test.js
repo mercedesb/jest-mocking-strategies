@@ -10,12 +10,6 @@ let renderFn = jest.fn();
 let mockUseContext = jest.fn(() => ({ animals: mockAnimals }));
 jest.spyOn(React, "useContext").mockImplementation(mockUseContext);
 
-let mockPluralize = jest.fn((word) => word);
-jest.mock("pluralize", () => ({
-  __esModule: true,
-  default: (word) => mockPluralize(word),
-}));
-
 afterEach(() => {
   jest.clearAllMocks();
   cleanup();

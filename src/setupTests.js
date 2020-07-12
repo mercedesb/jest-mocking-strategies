@@ -6,6 +6,11 @@ import "@testing-library/jest-dom/extend-expect";
 import { cleanup } from "@testing-library/react";
 import { SessionStorageMock } from "./testHelpers/sessionStorageMock";
 
+jest.mock("pluralize", () => ({
+  __esModule: true,
+  default: jest.fn((word) => word),
+}));
+
 const unmockedSessionStorage = global.sessionStorage;
 
 beforeAll(() => {

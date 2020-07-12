@@ -7,12 +7,6 @@ import { DisplayAnimalContainer } from "../DisplayAnimalContainer";
 let mockUseContext = jest.fn(() => ({ animals: mockAnimals }));
 jest.spyOn(React, "useContext").mockImplementation(mockUseContext);
 
-let mockPluralize = jest.fn((word) => word);
-jest.mock("pluralize", () => ({
-  __esModule: true,
-  default: (word) => mockPluralize(word),
-}));
-
 jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"), // use actual for all non-hook parts
   useParams: jest.fn(),

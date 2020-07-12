@@ -12,16 +12,10 @@ jest.mock("react-router-dom", () => ({
   }),
 }));
 
-// to mock a default export without an object
-// mock the module
-// add a mockImplementation or mockReturn value in your test
-jest.mock("pluralize", () => jest.fn());
-
 let subject;
 
 describe("Breadcrumbs", () => {
   beforeEach(() => {
-    pluralize.mockReturnValue(mockAnimal);
     subject = (
       <MemoryRouter>
         <Breadcrumbs />
