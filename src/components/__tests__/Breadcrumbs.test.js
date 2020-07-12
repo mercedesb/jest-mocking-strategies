@@ -17,14 +17,6 @@ jest.mock("react-router-dom", () => ({
 // add a mockImplementation or mockReturn value in your test
 jest.mock("pluralize", () => jest.fn());
 
-// error: The module factory of `jest.mock()` is not allowed to reference any out of scope variables
-// prefix mock to your variable name
-// mocking a default export function
-
-// to use spyOn, you must have an object.
-// modules that default export the function can't be spied on b/c you don't have an object spy on
-// Note: you can’t spy something that doesn’t exist on the object.
-
 let subject;
 
 describe("Breadcrumbs", () => {

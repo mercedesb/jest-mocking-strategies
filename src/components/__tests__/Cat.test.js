@@ -13,9 +13,6 @@ let refreshTime = 5000;
 describe("Cat", () => {
   describe("when fetching", () => {
     beforeEach(() => {
-      // needs to appear inside a describe
-      // putting in the top-level (whole file) beforeEach resulted in intervalId being undefined
-      // jest.useFakeTimers();
       subject = <Cat isFetching={true} refreshTime={refreshTime} />;
     });
 
@@ -30,8 +27,6 @@ describe("Cat", () => {
       render(subject);
       await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(1));
       act(() => jest.advanceTimersByTime(refreshTime));
-      // if you're seeing the not wrapped in act error, try await waitFor
-      // if you see "waitFor is not a function" upgrade @testing-library/react to major version 10
       await waitFor(() => expect(axios.get).toHaveBeenCalledTimes(2));
     });
   });

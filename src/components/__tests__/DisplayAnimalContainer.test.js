@@ -4,7 +4,6 @@ import { render } from "@testing-library/react";
 import { mockAnimals, mockAnimal } from "../../testHelpers/animalsFactory";
 import { DisplayAnimalContainer } from "../DisplayAnimalContainer";
 
-// need to make sure to call the function from the object in the code
 let mockUseContext = jest.fn(() => ({ animals: mockAnimals }));
 jest.spyOn(React, "useContext").mockImplementation(mockUseContext);
 
@@ -12,12 +11,6 @@ jest.mock("react-router-dom", () => ({
   ...jest.requireActual("react-router-dom"), // use actual for all non-hook parts
   useParams: jest.fn(),
 }));
-
-//  Cannot set property useParams of #<Object> which has only a getter
-// default import + this spy syntax doesn't work b/c default export of react-router-dom only has getters
-// jest
-//   .spyOn(reactRouterDom, "useParams")
-//   .mockImplementation(jest.fn(() => mockAnimal));
 
 let mockPluralize = jest.fn((word) => word);
 jest.mock("pluralize", () => ({

@@ -13,7 +13,6 @@ jest.mock("react-router-dom", () => ({
   }),
 }));
 
-// need to make sure to call the function from the object in the code
 let mockUseContext = jest.fn(() => ({ animals: mockAnimals }));
 jest.spyOn(React, "useContext").mockImplementation(mockUseContext);
 
