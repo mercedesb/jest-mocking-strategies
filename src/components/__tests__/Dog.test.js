@@ -3,9 +3,13 @@ import { render, act, cleanup, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { Dog } from "../Dog";
 
-jest.mock("axios", () => ({
-  get: jest.fn(),
-}));
+jest
+  .spyOn(axios, "get")
+  .mockReturnValue(Promise.resolve({ data: { message: "hello" } }));
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 afterEach(cleanup);
 
@@ -13,11 +17,6 @@ let subject;
 let refreshTime = 5000;
 
 describe("Dog", () => {
-  beforeEach(() => {
-    jest.resetAllMocks();
-    axios.get.mockReturnValue(Promise.resolve({ data: { file: "hello" } }));
-  });
-
   describe("when fetching", () => {
     beforeEach(() => {
       subject = <Dog isFetching={true} refreshTime={refreshTime} />;

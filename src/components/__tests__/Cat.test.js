@@ -3,9 +3,11 @@ import { render, act, cleanup, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { Cat } from "../Cat";
 
-jest.mock("axios", () => ({
-  get: jest.fn(),
-}));
+jest.spyOn(axios, "get").mockResolvedValue({ data: { file: "hello" } });
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 afterEach(cleanup);
 
@@ -13,15 +15,6 @@ let subject;
 let refreshTime = 5000;
 
 describe("Cat", () => {
-  beforeEach(() => {
-    jest.resetAllMocks();
-    axios.get.mockResolvedValue({ data: { file: "hello" } });
-    // could also mock the resolved promise itself
-    // axios.get.mockReturnValue(Promise.resolve({ data: { file: "hello" } }));
-    // could also mock the full implementation rather than just the return value
-    // axios.get.mockImplementation(() => Promise.resolve({ data: { file: "hello" } }));
-  });
-
   describe("when fetching", () => {
     beforeEach(() => {
       // needs to appear inside a describe

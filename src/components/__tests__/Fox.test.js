@@ -3,9 +3,13 @@ import { render, act, cleanup, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { Fox } from "../Fox";
 
-jest.mock("axios", () => ({
-  get: jest.fn(),
-}));
+jest
+  .spyOn(axios, "get")
+  .mockImplementation(() => Promise.resolve({ data: { file: "hello" } }));
+
+beforeEach(() => {
+  jest.clearAllMocks();
+});
 
 afterEach(cleanup);
 
@@ -13,13 +17,6 @@ let subject;
 let refreshTime = 5000;
 
 describe("Fox", () => {
-  beforeEach(() => {
-    jest.resetAllMocks();
-    axios.get.mockImplementation(() =>
-      Promise.resolve({ data: { file: "hello" } })
-    );
-  });
-
   describe("when fetching", () => {
     beforeEach(() => {
       subject = <Fox isFetching={true} refreshTime={refreshTime} />;
