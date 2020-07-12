@@ -7,24 +7,27 @@ export function Fox({ isFetching, refreshTime }) {
   const [foxImg, setFoxImg] = useState("");
   const [timeFetched, setTimeFetched] = useState("");
 
-  const fetchFoxImage = async () => {
-    const response = await axios.get("https://randomfox.ca/floof/");
-    setFoxImg(response.data.image);
-    setTimeFetched(new Date());
-  };
-
   useEffect(() => {
+    let intervalId;
+
+    const fetchFoxImage = async () => {
+      const response = await axios.get("https://randomfox.ca/floof/");
+      setFoxImg(response.data.image);
+      setTimeFetched(new Date(Date.now()));
+    };
+
     if (isFetching) {
       fetchFoxImage();
+      intervalId = setInterval(fetchFoxImage, refreshTime);
 
-      setIntervalVar(
-        setInterval(async () => {
-          fetchFoxImage();
-        }, refreshTime)
-      );
+      setIntervalVar(intervalId);
     } else if (!!intervalVar) {
       clearInterval(intervalVar);
     }
+
+    return function cleanup() {
+      clearInterval(intervalId);
+    };
   }, [isFetching]); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (

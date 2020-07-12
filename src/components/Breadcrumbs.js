@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import pluralize from "pluralize";
 
-export function Breadcrumbs(props) {
+export function Breadcrumbs() {
   let { animal } = useParams();
 
   return (

@@ -7,24 +7,26 @@ export function Cat({ isFetching, refreshTime }) {
   const [catImg, setCatImg] = useState("");
   const [timeFetched, setTimeFetched] = useState("");
 
-  const fetchCatImage = async () => {
-    const response = await axios.get("https://aws.random.cat/meow");
-    setCatImg(response.data.file);
-    setTimeFetched(new Date());
-  };
-
   useEffect(() => {
+    let intervalId;
+
+    const fetchCatImage = async () => {
+      const response = await axios.get("https://aws.random.cat/meow");
+      setCatImg(response.data.file);
+      setTimeFetched(new Date(Date.now()));
+    };
+
     if (isFetching) {
       fetchCatImage();
-
-      setIntervalVar(
-        setInterval(async () => {
-          fetchCatImage();
-        }, refreshTime)
-      );
+      intervalId = setInterval(fetchCatImage, refreshTime);
+      setIntervalVar(intervalId);
     } else if (!!intervalVar) {
       clearInterval(intervalVar);
     }
+
+    return function cleanup() {
+      clearInterval(intervalId);
+    };
   }, [isFetching]); //eslint-disable-line react-hooks/exhaustive-deps
 
   return (

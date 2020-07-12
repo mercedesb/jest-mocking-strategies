@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import pluralize from "pluralize";
 import { SupportedAnimals } from "../contexts/SupportedAnimals";
 
 const REFRESH_TIME_IN_SECONDS = 3;
 
 export function FetchingContainer({ animal, render }) {
-  const { animals } = useContext(SupportedAnimals);
+  const { animals } = React.useContext(SupportedAnimals);
 
   const [isFetching, setIsFetching] = useState(
     sessionStorage.getItem("isFetching") === "true"
@@ -16,7 +16,6 @@ export function FetchingContainer({ animal, render }) {
   }, [isFetching]);
 
   const isSupported = animals.includes(animal);
-
   return (
     <React.Fragment>
       {isSupported ? (

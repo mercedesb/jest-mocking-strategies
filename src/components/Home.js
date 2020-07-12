@@ -1,10 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import pluralize from "pluralize";
 import { SupportedAnimals } from "../contexts/SupportedAnimals";
 
 export function Home() {
-  const { animals } = useContext(SupportedAnimals);
+  const { animals } = React.useContext(SupportedAnimals);
 
   return (
     <div>
@@ -18,7 +18,7 @@ export function Home() {
       </p>
       <div className="buttonContainer flex justifyCenter">
         {animals.map((animal) => (
-          <button>
+          <button key={animal}>
             <Link to={`/cute/${animal}`}>See cute {pluralize(animal)}</Link>
           </button>
         ))}

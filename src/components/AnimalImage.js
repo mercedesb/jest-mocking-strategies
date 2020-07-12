@@ -1,5 +1,5 @@
 import React from "react";
-import { DisplayDateTime } from "./DisplayDateTime";
+import { displayTime } from "../helpers/dateTimeHelper";
 
 export function AnimalImage({ type, image, timeFetched }) {
   return (
@@ -7,9 +7,7 @@ export function AnimalImage({ type, image, timeFetched }) {
       <div className="imgContainer flex justifyCenter">
         <img src={image} alt={`A random ${type}. I'm sure it's very cute.`} />
       </div>
-      <p>
-        This image was fetched at <DisplayDateTime datetime={timeFetched} />
-      </p>
+      <p>This image was fetched at {displayTime(timeFetched)}</p>
     </div>
   );
 }

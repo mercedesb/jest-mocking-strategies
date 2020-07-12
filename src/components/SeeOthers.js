@@ -1,15 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useParams, Link } from "react-router-dom";
 import pluralize from "pluralize";
 import { SupportedAnimals } from "../contexts/SupportedAnimals";
 
 export function SeeOthers() {
   const { animal } = useParams();
-  const { animals: supportedAnimals } = useContext(SupportedAnimals);
+  const { animals } = React.useContext(SupportedAnimals);
 
-  const animalsToRender = supportedAnimals.filter(
-    (a) => a !== pluralize(animal, 1)
-  );
+  const animalsToRender = animals.filter((a) => a !== pluralize(animal, 1));
 
   return (
     <div>
@@ -17,7 +15,7 @@ export function SeeOthers() {
       <div className="capitalize">
         <ul>
           {animalsToRender.map((a) => (
-            <li>
+            <li key={a}>
               <Link to={a}>{pluralize(a)}</Link>
             </li>
           ))}
