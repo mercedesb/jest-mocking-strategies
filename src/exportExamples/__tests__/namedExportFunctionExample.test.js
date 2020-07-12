@@ -2,7 +2,6 @@ import { example } from "../namedExportObjectExample";
 
 const mockExpected = "mock value";
 jest.mock("../namedExportObjectExample", () => ({
-  __esModule: true,
   example: jest.fn(() => mockExpected),
 }));
 

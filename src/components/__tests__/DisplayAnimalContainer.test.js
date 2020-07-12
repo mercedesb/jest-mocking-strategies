@@ -17,11 +17,11 @@ jest.mock("react-router-dom", () => ({
   useParams: jest.fn(),
 }));
 
-// this doesn't work b/c default export of react-router-dom only has getters
-// there is no default export object
-// jest.spyOn(ReactRouterDom, "useParams").mockImplementation(() => ({
-//   animal: mockAnimal,
-// }));
+//  Cannot set property useParams of #<Object> which has only a getter
+// default import + this spy syntax doesn't work b/c default export of react-router-dom only has getters
+// jest
+//   .spyOn(reactRouterDom, "useParams")
+//   .mockImplementation(jest.fn(() => mockAnimal));
 
 let mockPluralize = jest.fn((word) => word);
 jest.mock("pluralize", () => ({
