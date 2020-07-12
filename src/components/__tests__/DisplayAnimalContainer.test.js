@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams, MemoryRouter } from "react-router-dom";
-import { render, cleanup } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { randomInteger } from "../../helpers/numberHelper";
 import { DisplayAnimalContainer } from "../DisplayAnimalContainer";
 
@@ -30,8 +30,6 @@ jest.mock("pluralize", () => ({
 }));
 
 let subject;
-
-afterEach(cleanup);
 
 describe("DisplayAnimalContainer", () => {
   describe("with a supported animal type", () => {

@@ -1,12 +1,10 @@
 import React from "react";
-import { render, act, cleanup, waitFor } from "@testing-library/react";
+import { render, act, waitFor } from "@testing-library/react";
 import { Bunny } from "../Bunny";
 
 afterAll(() => {
   delete global.fetch;
 });
-
-afterEach(cleanup);
 
 let subject;
 let refreshTime = 5000;

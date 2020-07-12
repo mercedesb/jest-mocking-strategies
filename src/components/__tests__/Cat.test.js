@@ -1,17 +1,11 @@
 import React from "react";
-import { render, act, cleanup, waitFor } from "@testing-library/react";
+import { render, act, waitFor } from "@testing-library/react";
 import axios from "axios";
 import { Cat } from "../Cat";
 
 jest
   .spyOn(axios, "get")
   .mockReturnValue(Promise.resolve({ data: { message: "hello" } }));
-
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
-afterEach(cleanup);
 
 let subject;
 let refreshTime = 5000;

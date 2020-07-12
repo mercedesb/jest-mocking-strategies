@@ -1,6 +1,6 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { render, cleanup } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { Home } from "../Home";
 
 let subject;
@@ -16,8 +16,6 @@ jest.mock("pluralize", () => ({
   __esModule: true,
   default: (word) => mockPluralize(word),
 }));
-
-afterEach(cleanup);
 
 describe("Home", () => {
   describe("render", () => {

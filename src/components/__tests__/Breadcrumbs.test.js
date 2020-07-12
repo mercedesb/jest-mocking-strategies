@@ -1,6 +1,6 @@
 import React from "react";
 import { MemoryRouter } from "react-router-dom";
-import { render, cleanup } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import pluralize from "pluralize";
 import { randomInteger } from "../../helpers/numberHelper";
 import { Breadcrumbs } from "../Breadcrumbs";
@@ -30,8 +30,6 @@ jest.mock("pluralize", () => jest.fn());
 // Note: you can’t spy something that doesn’t exist on the object.
 
 let subject;
-
-afterEach(cleanup);
 
 describe("Breadcrumbs", () => {
   beforeEach(() => {

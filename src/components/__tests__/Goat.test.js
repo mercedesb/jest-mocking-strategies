@@ -1,8 +1,6 @@
 import React from "react";
-import { render, act, cleanup, waitFor } from "@testing-library/react";
+import { render, act, waitFor } from "@testing-library/react";
 import { Goat } from "../Goat";
-
-afterEach(cleanup);
 
 let subject;
 let refreshTime = 5000;

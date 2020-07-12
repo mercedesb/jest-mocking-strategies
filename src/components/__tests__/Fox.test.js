@@ -5,12 +5,6 @@ import { Fox } from "../Fox";
 
 jest.spyOn(axios, "get").mockResolvedValue({ data: { file: "hello" } });
 
-beforeEach(() => {
-  jest.clearAllMocks();
-});
-
-afterEach(cleanup);
-
 let subject;
 let refreshTime = 5000;
 
