@@ -12,7 +12,7 @@ function App() {
         <h1>Jest mocking strategies</h1>
         <a
           className="App-link"
-          href="https://github.com/mercedesb/jest-mock-examples"
+          href="https://github.com/mercedesb/jest-mocking-strategies"
           target="_blank"
           rel="noopener noreferrer"
         >
